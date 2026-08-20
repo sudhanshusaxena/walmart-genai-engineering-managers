@@ -1,0 +1,32 @@
+[
+  {
+    "shipment_id": "SHP-88121",
+    "sku": "WM-KETTLE-01",
+    "units": 48,
+    "dest_store": 4479,
+    "status": "DELAYED",
+    "original_eta": "2026-08-11",
+    "current_eta": "2026-08-18",
+    "note": "Carrier weather hold at DC 6094; trailer re-slotted, +7 days."
+  },
+  {
+    "shipment_id": "SHP-88377",
+    "sku": "WM-AIRFRY-11",
+    "units": 24,
+    "dest_store": 4479,
+    "status": "IN_TRANSIT",
+    "original_eta": "2026-08-15",
+    "current_eta": "2026-08-15",
+    "note": "On schedule."
+  },
+  {
+    "shipment_id": "SHP-88402",
+    "sku": "WM-TOWEL-04",
+    "units": 120,
+    "dest_store": 2091,
+    "status": "DELIVERED",
+    "original_eta": "2026-08-12",
+    "current_eta": "2026-08-12",
+    "note": "Received and putaway complete."
+  }
+]

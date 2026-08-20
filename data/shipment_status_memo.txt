@@ -1,0 +1,24 @@
+INBOUND SHIPMENT STATUS MEMO
+Issued: 10 August 2026, 08:00
+Owner: Regional Inbound Logistics — DC 6094
+Distribution: Store Systems, Replenishment, Store 4479 management
+
+SUMMARY OF INBOUND SHIPMENTS TO STORE 4479
+
+SHP-88121 — WM-KETTLE-01 — 48 units
+  Status: IN TRANSIT, ON SCHEDULE
+  Expected arrival: 11 August 2026
+  Notes: Trailer loaded at DC 6094 and departed on plan. No exceptions
+  reported. Replenishment team should plan shelf reset for the morning
+  of 12 August.
+
+SHP-88377 — WM-AIRFRY-11 — 24 units
+  Status: IN TRANSIT, ON SCHEDULE
+  Expected arrival: 15 August 2026
+
+SHP-88402 — WM-TOWEL-04 — 120 units
+  Status: IN TRANSIT
+  Expected arrival: 12 August 2026, destination Store 2091
+
+This memo reflects carrier status as of the issue date and time above.
+For current status, consult the inbound shipment tracking system.

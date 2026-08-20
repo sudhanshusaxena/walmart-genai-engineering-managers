@@ -1,0 +1,104 @@
+RETAIL TECHNOLOGY GROUP — ENGINEERING HANDBOOK
+Version 4.2 | Internal Use Only | Owner: Engineering Operations Council
+
+============================================================
+SECTION 1: ENGINEER ONBOARDING
+============================================================
+
+1.1 First-Week Checklist
+All new engineers complete the "Runway" onboarding track within their
+first 10 working days. The Runway track includes:
+  - Day 1-2: Laptop provisioning, VPN access, and badge activation via
+    the ServiceHub portal. Manager approves access tiers.
+  - Day 3-4: Codebase orientation. Every new engineer is assigned an
+    Onboarding Buddy from their pod for the first 30 days.
+  - Day 5-7: First "starter ticket" — a low-risk, well-scoped change
+    merged to a non-critical service. The goal is one merged pull
+    request within the first two weeks.
+  - Day 8-10: Shadow one full on-call handoff meeting and one
+    production deployment.
+
+1.2 Access Policy
+Production database read access requires completion of the Data
+Handling certification (renewed annually). Write access to production
+systems is never granted to engineers in their first 60 days.
+
+1.3 The 30/60/90 Expectations
+  - 30 days: merging small changes independently; knows pod's services.
+  - 60 days: owns a feature workstream; participates in code review.
+  - 90 days: eligible to join the on-call rotation after completing
+    the Incident Response workshop and shadowing two on-call shifts.
+
+============================================================
+SECTION 2: ON-CALL POLICY
+============================================================
+
+2.1 Rotation Structure
+Each pod runs a weekly on-call rotation with two roles:
+  - PRIMARY: first responder for all pages.
+  - SECONDARY: backup; automatically paged if the primary does not
+    acknowledge within the escalation window.
+Rotations hand off every Tuesday at 10:00 local time in the pod's
+on-call handoff meeting.
+
+2.2 Acknowledgement and Escalation Windows
+  - Severity 1 (SEV-1, customer-facing outage): the primary must
+    acknowledge the page within 5 minutes. If unacknowledged, the
+    page escalates to the secondary, then to the Engineering Manager
+    at the 15-minute mark.
+  - Severity 2 (SEV-2, degraded experience): acknowledge within
+    15 minutes.
+  - Severity 3 (SEV-3, non-urgent defect): acknowledge within
+    4 business hours.
+
+2.3 Incident Roles
+Every SEV-1 incident requires three named roles within the first
+20 minutes: an Incident Commander (IC), a Communications Lead who
+posts updates to the #incident-bridge channel every 30 minutes, and
+a Scribe who maintains the incident timeline.
+
+2.4 On-Call Health Rules
+  - No engineer may serve more than one primary week per three-week
+    period without Engineering Manager sign-off.
+  - Engineers paged more than twice between 22:00 and 06:00 receive
+    the following morning off ("recovery morning") — this is policy,
+    not a courtesy.
+  - Post-incident reviews (PIRs) are blameless and must be scheduled
+    within 5 business days of any SEV-1 or SEV-2.
+
+============================================================
+SECTION 3: DEPLOYMENT POLICY
+============================================================
+
+3.1 Standard Deployment Windows
+Production deployments are permitted Monday through Thursday,
+09:00-16:00 local time. Friday deployments require Director
+approval. No deployments on weekends or company holidays except
+approved emergency fixes.
+
+3.2 Peak-Season Change Freeze
+A change freeze is in effect each year from November 15 through
+January 5 covering all customer-facing retail systems (point-of-sale,
+checkout, inventory, and order management). During the freeze:
+  - Only P0 emergency fixes may ship, with VP Engineering approval.
+  - All freeze-exception deployments require a rollback plan tested
+    in staging and a named on-call owner watching dashboards for
+    60 minutes post-deploy.
+
+3.3 Deployment Requirements (All Environments)
+Every production deployment must have:
+  1. A green run on the full CI pipeline (unit, integration, and
+     contract tests).
+  2. Peer review approval from at least one engineer outside the
+     authoring pair.
+  3. A canary stage: new builds serve 5% of traffic for a minimum of
+     30 minutes before full rollout. Error-rate increase above 0.5%
+     versus baseline triggers automatic rollback.
+  4. A one-line rollback path. If rollback takes more than one
+     command or one click, the deployment plan is rejected.
+
+3.4 Feature Flags
+All customer-facing changes ship behind feature flags. Flags default
+to OFF in production. Stale flags must be removed within 90 days of
+full rollout; the flag-debt report is reviewed monthly by each
+Engineering Manager.
