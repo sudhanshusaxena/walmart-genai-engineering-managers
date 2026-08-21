@@ -86,6 +86,16 @@ TICKETS = [
 
 if __name__ == "__main__":
     out = os.path.join(HERE, "incident_tickets.json")
+
+    # Non-destructive: if a queue file already exists (e.g. the facilitator's own),
+    # leave it alone. Delete the file, or pass --force, to regenerate.
+    import sys
+    if os.path.exists(out) and "--force" not in sys.argv:
+        existing = json.load(open(out, encoding="utf-8"))
+        print(f"  incident_tickets.json already exists "
+              f"({len(existing.get('tickets', []))} tickets) — left untouched.")
+        raise SystemExit(0)
+
     with open(out, "w", encoding="utf-8") as f:
         json.dump({"tickets": TICKETS}, f, indent=2)
     print(f"  created  incident_tickets.json  {len(TICKETS)} tickets, {os.path.getsize(out):,} bytes")
